@@ -1,0 +1,111 @@
+<html>
+    <head>
+        <style>
+        <title>Women Clothing</title>
+        * {box-sizing:border-box;}
+        img-zoom-container{
+            position:relative;
+        }
+        .img-zoom-lens{
+            position:absolut;
+            border:1px solid #d4d4d4;
+            width:60px;
+            height:60px;
+        }
+        .img-zoom-result{
+            border:1px solid #d4d4d4;
+            width:300px;
+            height:300px
+        }
+    </style>
+    </head>
+<body bgcolor="#F1F3F6">
+<table border="0" width="100%" bgcolor="#2874F0">
+    <tr>
+    <td><input type="text" placeholder="Search products brands and more"></td>
+     <th><font color="white">Login & Signup</font> </th>
+     <th><font color="white">More</font>  </th>
+     <th><img src="cart.jpg"  height="20%"></th>
+    </tr>
+    </table>
+    <br>
+    <br>
+    <table border="0" width="100%">
+        <tr>
+            <th width="40%" class="img-zoom-container"><img src="s5.jpeg" width="60%" height="50%" id="myimage"></th>
+            <td><b><font size="5">Sariya</b> <br>
+                Woven Banarasi Silk Blend, Jacquard Saree  (Red)</font>
+                <br>
+              <font color="green"> Special price<br></font><br>
+              <font size="5"><b>₹880</b></font>  <font color="gray">₹4,999</font>      <font color="green">82% off</font>
+              <br>
+              <ul>
+                      <li><font size="4">Special PriceGet extra 20% off (price inclusive of discount)T&C</li>  
+
+<li>Combo OfferBuy 3 items save 5%;Buy 4 save 10%;Buy 5+ save 15%See all productsT&C</li>  
+
+<li>Bank Offer10% off on SBI Credit Cards, up to ₹1750. On orders of ₹5000 and aboveT&C</li>  
+
+<li>Bank Offer10% off on SBI Debit Cards, up to ₹1250. On orders of ₹5000 and aboveT&C</font></li>
+</ul>
+<br>
+<button onclick="document.location='https://www.flipkart.com/clothing-and-accessories/saree-and-accessories/saree/women-saree/pr?sid=clo,8on,zpd,9og&otracker=categorytree&otracker=nmenu_sub_Women_0_Sarees'"style="background-color: green; color:white; width: 200px; height: 40px;font-size: 20px " >BUY NOW</button>
+<input type="button onclick=https://www.flipkart.com/ " value="ADD TO CART" style="background-color: orange; color:white; width: 200px; height: 40px; font-size: 20px;">
+
+</td>
+<td id="myresult" class="img-zoom-result"></td>
+        </tr>
+    </table>
+
+<script>
+    function imageZoom(imgID,resultID){
+        var img,lens,result,cx,cy;
+        img= document.getElementById(imgID);
+        result= document.getElementById(resultID);
+        lense=document.createElement("DIV");
+        lens.setAttribute("class","img-zoom-lens");
+        img.parentElement.insertBefore(lens,img);
+        cx=result.offsetWidth / lens.offsetWidth;
+        cy=result.offsetHeight /lens.offsetHeight;
+        result.style.backgroundImage="url('"+ img.src + "')";
+        result.style.backgroundSize=(img.width *cx) +"px" + (img.height * cy) + "px";
+        lens.addEventListener("mousemove",movelens);
+        img.addEventListener("mousemove",movelens);
+        lens.addEventListener("touchmove",movelens);
+        img.addEventListener("touchmove",movelens);
+        function movelens(e){
+            var pos,x,y;
+            e.preventDefault();
+            pos=getCursorPos(e);
+            x=pos.x-(lens.offsetWidth / 2);
+            y=pos.y-(lens.offsetHeight / 2);
+            if (x> img.width - lens.offsetWidth) {x=img.width - lens.offsetWidth;}
+            if (x<0) {x=0;}
+            if (x> img.height - lens.offsetHeight) {x=img.height - lens.offsetHeight;}
+            if (y<0) {y=0;}
+            lens.style.left=x+"px";
+            lens.style.top=y+"px";
+            result.style.backgroundPosition= "_" + (x * cx) + "px"   -" + (y * cy) + "px"; 
+            }
+            function getCursorPos(e){
+                var a, x=0, y=0;
+                e=e|| window.event;
+                a=img.getBoundingClientRect();
+                x= e.pageX - a.left;
+                y= e.pageY- a.top;
+                x=x - window.pageXOffset;
+                y=y -window.pageYOffset;
+                return{x : x , y: y};
+            }
+       
+    }
+</script>
+<script>
+    imageZoom("myimage", "myresult");
+</script>
+
+
+
+
+    </body>
+    </html>
